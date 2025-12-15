@@ -1,5 +1,11 @@
 
+// Declare JS DOM variables
 
+
+
+
+// Outputs
+const displayFavoriteCity = document.getElementById("displayFavoriteCity");
 
 let currentCity = "Stockton"
 const getData = async (currentCity) => {
