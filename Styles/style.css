@@ -43,3 +43,8 @@ body{
     font-family: Iceberg;
 }
 /* ENd of font classes */
+.x-button{
+    width: 30px;
+    margin-left: auto;
+    margin-top: 20px;
+}

@@ -13,7 +13,6 @@
 <body>
   <!-- The header will include two navbar links and a input search bar!-->
   <header>
-
     <nav class="navbar navbar-expand-lg navBG">
       <div class="container-fluid d-flex justify-content-between">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -22,7 +21,8 @@
               href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white fontIceberg" style="font-size: 40px; padding-left: 6rem;" href="./Pages/favorites.html">Favorites City</a>
+            <a class="nav-link text-white fontIceberg" style="font-size: 40px; padding-left: 6rem;"
+              href="./Pages/favorites.html">Favorites City</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -31,8 +31,6 @@
         </form>
       </div>
     </nav>
-
-
   </header>
   <!-- Include title with fav button, current city weather with col (city name, currentTemp, date in one col), Icon with text underneath and another row with High and Low displayed -->
   <article>
@@ -40,7 +38,9 @@
       <div class="row my-5">
         <div class="col d-flex justify-content-center">
           <h1 class="impactFont text-white" style="font-size: 100px; font-weight: 400;">Weather Forecast</h1>
-          <img src="./WeatherAssets/heart-outline.png" class="object-fit-contain ps-4" style="width: 100px; height: auto;" alt="Favorite Button non-functional">
+          <img id="toggleFavoriteBtn" src="./WeatherAssets/heart-outline.png" class="object-fit-contain ps-4"
+            style="width: 100px; height: auto;" alt="Favorite Button non-functional">
+
         </div>
       </div>
     </div>
@@ -48,21 +48,20 @@
     <div class="container currentCityBg text-white">
       <div class="row py-4 d-flex justify-content-center">
         <div class="col-6 ps-5">
-          <h2 class="impactFont text-white" style="font-size: 64px;">Manteca</h2>
-          <h2 style="font-size: 100px;">42°</h2>
-          <p style="font-size: 36px;">15 Dec 2025 Monday</p>
+          <h2 id="currentCityName" class="impactFont text-white" style="font-size: 64px;">Manteca</h2>
+          <h2 id="currentCityTemp" style="font-size: 100px;">42°</h2>
+          <p id="currentDate" style="font-size: 36px;">15 Dec 2025 Monday</p>
         </div>
         <div class="col-6 d-flex flex-column justify-content-center align-items-center">
-          <div id="weatherIcon">
-            <img src="./WeatherAssets/yellow-sun.png" style="width: 150px;" alt="">
-          </div>
-          <p class="pt-4" style="font-size: 24px;">Sunny</p>
+          <img id="currentWeatherIcon" src="./WeatherAssets/yellow-sun.png" style="width: 150px;"
+            alt="Weather ICON Here">
+          <p id="currentWeatherDesc" class="pt-4" style="font-size: 24px;">Sunny</p>
         </div>
       </div>
       <div class="row">
         <div class="col-12 d-flex align-items-end justify-content-center" style="font-size: 32px;">
-          <p class="pe-5">H: 53°</p>
-          <p>L: 41°</p>
+          <p id="currentHighTemp" class="pe-5">H: 53°</p>
+          <p id="currentLowTemp">L: 41°</p>
         </div>
       </div>
     </div>
@@ -70,7 +69,7 @@
 
   <!-- Display a 5 Day forecast -->
   <section>
-    <div class="container mb-5">
+    <div class="container" style="margin-bottom: 5rem;">
       <div class="row my-4">
         <div class="col">
           <h1 class="text-white text-center" style="font-size: 64px;">5-Day Forecast</h1>
@@ -79,37 +78,37 @@
       <div class="row">
         <div class="col d-flex justify-content-center">
           <div class="text-white">
-            <h3 style="text-align: center;">Mon</h3>
-            <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
+            <h3 id="firstDayOfWeek" style="text-align: center;">Mon</h3>
+            <img id="firstIconWeather" src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
             <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
-            <h3 style="text-align: center;">Mon</h3>
-            <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
+            <h3 id="secondDayOfWeek" style="text-align: center;">Mon</h3>
+            <img id="secondIconWeather" src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
             <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
-            <h3 style="text-align: center;">Mon</h3>
-            <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
+            <h3 id="thirdDayOfWeek" style="text-align: center;">Mon</h3>
+            <img id="thirdIconWeather" src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
             <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
-            <h3 style="text-align: center;">Mon</h3>
-            <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
+            <h3 id="fourthDayOfWeek" style="text-align: center;">Mon</h3>
+            <img id="fourthIconWeather" src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
             <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
-            <h3 style="text-align: center;">Mon</h3>
-            <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
-            <p style="text-align: center; font-size: 30px;">45°</p>
+            <h3 id="fifthDayOfWeek" style="text-align: center;">Mon</h3>
+            <img id="fifthIconWeather" src="./WeatherAssets/sun-icon.png" class="my-3 mx-auto d-block" style="width: 98px;" alt="Weather Icons">
+            <p style="text-align: center; font-size: 30px;">H: 45° L: 30°</p>
           </div>
         </div>
       </div>
