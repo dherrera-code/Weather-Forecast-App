@@ -1,0 +1,31 @@
+body{
+    /* background-image: url("../Weather\ Assets/sunrise&Setvideo-2.gif"); */
+    background-image: url("../WeatherAssets/weather-background5S.gif");
+    background-repeat: no-repeat;
+    background-size:cover;
+    /* background-attachment: fixed; */
+    /* overflow: hidden; */
+}
+/* Start Background colors with background opacity! */
+.navBG{
+    background-color: rgba(255, 255, 255, 0.24);
+}
+.searchBarBg{
+    background-color: rgb(32, 29, 29, 0.29);
+}
+.currentCityBg{
+    background-color: rgb(32, 29, 29, 0.3);
+    width: 665px;
+    height: 436px;
+    border-radius: 50px;
+}
+/* End of bg-colors */
+
+/* Need to import all 4 fonts */
+.impactFont{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.fontIceberg{
+    font-family: Iceberg;
+}
+/* ENd of font classes */
