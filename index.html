@@ -18,16 +18,16 @@
       <div class="container-fluid d-flex justify-content-between">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active text-white fontIceberg pe-5" style="font-size: 40px;" aria-current="page"
+            <a class="nav-link active text-white fontIceberg px-5" style="font-size: 40px;" aria-current="page"
               href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white fontIceberg" style="font-size: 40px;" href="./Pages/favorites.html">Favorites City</a>
+            <a class="nav-link text-white fontIceberg" style="font-size: 40px; padding-left: 6rem;" href="./Pages/favorites.html">Favorites City</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input id="inputCity" style="width: 786px; height: 114px; border-radius: 60px;"
-            class="me-2 searchBarBg inputColor" type="search" placeholder="Search City" aria-label="Search" />
+          <input id="inputCity" style="width: 786px; height: 114px; border-radius: 60px; font-size: 20px;"
+            class="me-2 searchBarBg inputColor text-white" placeholder="       Search City" aria-label="Search" />
         </form>
       </div>
     </nav>
@@ -37,35 +37,37 @@
   <!-- Include title with fav button, current city weather with col (city name, currentTemp, date in one col), Icon with text underneath and another row with High and Low displayed -->
   <article>
     <div class="container text-white">
-      <div class="row">
+      <div class="row my-5">
         <div class="col d-flex justify-content-center">
           <h1 class="impactFont text-white" style="font-size: 100px; font-weight: 400;">Weather Forecast</h1>
-          <img src="./WeatherAssets/Favourite red button.jpeg" alt="Favorite Button non-functional">
+          <img src="./WeatherAssets/heart-outline.png" class="object-fit-contain ps-4" style="width: 100px; height: auto;" alt="Favorite Button non-functional">
         </div>
       </div>
     </div>
-    <div class="container text-white d-flex justify-content-center">
-      <div class="row currentCityBg d-flex justify-content-center">
-        <div class="col">
+    <!-- Current Weather Box -->
+    <div class="container currentCityBg text-white">
+      <div class="row py-4 d-flex justify-content-center">
+        <div class="col-6 ps-5">
           <h2 class="impactFont text-white" style="font-size: 64px;">Manteca</h2>
-          <h2>42°</h2>
-          <p>15 Dec 2025 Monday</p>
+          <h2 style="font-size: 100px;">42°</h2>
+          <p style="font-size: 36px;">15 Dec 2025 Monday</p>
         </div>
-        <div class="col">
+        <div class="col-6 d-flex flex-column justify-content-center align-items-center">
           <div id="weatherIcon">
-
+            <img src="./WeatherAssets/yellow-sun.png" style="width: 150px;" alt="">
           </div>
-          <p>Sunny</p>
+          <p class="pt-4" style="font-size: 24px;">Sunny</p>
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <p>H: 53°</p>
+        <div class="col-12 d-flex align-items-end justify-content-center" style="font-size: 32px;">
+          <p class="pe-5">H: 53°</p>
           <p>L: 41°</p>
         </div>
       </div>
     </div>
   </article>
+
   <!-- Display a 5 Day forecast -->
   <section>
     <div class="container mb-5">
@@ -79,35 +81,35 @@
           <div class="text-white">
             <h3 style="text-align: center;">Mon</h3>
             <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
-            <p style="text-align: center;">45°</p>
+            <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
             <h3 style="text-align: center;">Mon</h3>
             <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
-            <p style="text-align: center;">45°</p>
+            <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
             <h3 style="text-align: center;">Mon</h3>
             <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
-            <p style="text-align: center;">45°</p>
+            <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
             <h3 style="text-align: center;">Mon</h3>
             <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
-            <p style="text-align: center;">45°</p>
+            <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
         <div class="col d-flex justify-content-center">
           <div class="text-white">
             <h3 style="text-align: center;">Mon</h3>
             <img src="./WeatherAssets/sun-icon.png" class="py-3" style="width: 98px;" alt="Weather Icons">
-            <p style="text-align: center;">45°</p>
+            <p style="text-align: center; font-size: 30px;">45°</p>
           </div>
         </div>
       </div>
