@@ -38,7 +38,7 @@ let currentCity = "Stockton"
 let currentCityData;
 
 const getData = async (currentCity) => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=41f2b9edc30c8f24fe8fcaca12ae33f7`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
     console.log(data);
@@ -46,14 +46,13 @@ const getData = async (currentCity) => {
 }
 
 const getGeoLocationData = async (lat, long) => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=41f2b9edc30c8f24fe8fcaca12ae33f7`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
     console.log(data);
     console.log(data.list);
 
 }
-
 const geoLocation = () => {
     // Check if the browser supports geolocation
     if (!navigator.geolocation) {
@@ -65,7 +64,6 @@ const geoLocation = () => {
         (position) => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            
             console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
             getGeoLocationData(latitude, longitude);
         },
@@ -88,7 +86,7 @@ const geoLocation = () => {
     );
 };
 //This function should run when the websites first boots.
-geoLocation();
+// geoLocation();
 
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");

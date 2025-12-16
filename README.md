@@ -4,7 +4,8 @@ Weather Sprint Day 1 (12/15): Initialized Repo, re-created the structure of both
 Implemented a function to call API data from OpenWEather API!
 
 
-Todays goals: complete structure and API calls into console. (complete)
+Monday goals: complete structure and API calls into console. (complete)
+Tuesday goals: The goal is to be around 25-45% done with your layout.
 
 Notes from Pallavi: 
     Two pages:
@@ -16,4 +17,4 @@ Notes from Pallavi:
     Favorite Page:
     Will store 5 favorite cities.
     Functionality: button on all cards that can remove a favorite city.
-        search bar will redirect to home page with user inputted city!
+    search bar will redirect to home page with user inputted city!
