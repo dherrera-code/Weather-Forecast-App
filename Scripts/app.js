@@ -105,27 +105,27 @@ const getWeatherIcon = (iconID) => {
 }
 const convertDateToDayOfWeek = (dateString) => {
     let date = dateString.substring(0, 10);
-   
-    console.log(new Date(date));
-    let dayOfWeek = new Date(date).getDay();  //returns 0-6 (1)
-console.log(date.toLocaleString({ weekday: 'long', year: 'numeric', month: "short", day: 'numeric' }))
 
+    console.log(new Date(date));
+    let savedDate = new Date(date);
+    savedDate = savedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+    let dayOfWeek = new Date(date).getDay();  //returns 0-6 (1)
     date.toLocaleString();
     switch (dayOfWeek) {
         case 0:
-            return "Monday";
+            return "Monday " + savedDate;
         case 1:
-            return "Tuesday";
+            return "Tuesday " + savedDate;
         case 2:
-            return "Wednesday";
+            return "Wednesday " + savedDate;
         case 3:
-            return "Thursday";
+            return "Thursday " + savedDate;
         case 4:
-            return "Friday";
+            return "Friday " + savedDate;
         case 5:
-            return "Saturday";
+            return "Saturday " + savedDate;
         case 6:
-            return "Sunday";
+            return "Sunday " + savedDate;
         default:
             return "Non-dayOfWeek!";
     }
