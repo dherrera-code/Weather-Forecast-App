@@ -44,7 +44,8 @@ const getData = async (currentCity) => {
     const data = await response.json();
     currentCityData = data;
     console.log(data);
-    console.log(data.list)
+    console.log(data.list);
+    //call nececssary functions to display newly selected city
 }
 
 const getGeoLocationData = async (lat, long) => {
@@ -102,10 +103,39 @@ const getWeatherIcon = (iconID) => {
             break;
     }
 }
+const convertDateToDayOfWeek = (dateString) => {
+    let date = dateString.substring(0, 10);
+   
+    console.log(new Date(date));
+    let dayOfWeek = new Date(date).getDay();  //returns 0-6 (1)
+console.log(date.toLocaleString({ weekday: 'long', year: 'numeric', month: "short", day: 'numeric' }))
+
+    date.toLocaleString();
+    switch (dayOfWeek) {
+        case 0:
+            return "Monday";
+        case 1:
+            return "Tuesday";
+        case 2:
+            return "Wednesday";
+        case 3:
+            return "Thursday";
+        case 4:
+            return "Friday";
+        case 5:
+            return "Saturday";
+        case 6:
+            return "Sunday";
+        default:
+            return "Non-dayOfWeek!";
+    }
+
+}
 const displayCurrentCity = (currentCityData) => {
     currentCityName.textContent = currentCityData.city.name + ` ${currentCityData.city.country}`;
     currentCityTemp.textContent = convertKToF(currentCityData.list[0].main.temp) + "°";
-    // currentDate.textContent = 
+    console.log(currentCityData.list[0].dt_txt);
+    currentDate.textContent = convertDateToDayOfWeek(currentCityData.list[0].dt_txt)
     let weatherIcon = getWeatherIcon(currentCityData.list[0].weather[0].icon);
     currentWeatherIcon.src = weatherIcon;
     currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
