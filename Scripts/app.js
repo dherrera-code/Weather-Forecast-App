@@ -45,7 +45,7 @@ const getData = async (currentCity) => {
     currentCityData = data;
     console.log(data);
     console.log(data.list);
-    //call nececssary functions to display newly selected city
+    //call necessary functions to display newly selected city
 }
 
 const getGeoLocationData = async (lat, long) => {
@@ -105,9 +105,9 @@ const getWeatherIcon = (iconID) => {
 }
 const getCurrentDate = (dateString) => {
     let date = dateString.substring(0, 10);
-   
+
     let savedDate = new Date(date);
-savedDate = savedDate.toLocaleDateString('en-US', {year: 'numeric',month: 'short',day: 'numeric'})
+    savedDate = savedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
     let dayOfWeek = new Date(savedDate).getDay();  //returns 0-6 (1)
     date.toLocaleString();
     const dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -115,9 +115,21 @@ savedDate = savedDate.toLocaleDateString('en-US', {year: 'numeric',month: 'short
 }
 const getDayOfWeek = (dateString) => {
     let newDate = new Date(dateString).getDay();
-    console.log(newDate+ " " + new Date(dateString))
+    console.log(newDate + " " + new Date(dateString))
     const dayArray = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
     return dayArray[newDate];
+}
+
+const getHighNLow = (data, startIndex) => {
+    let highTemp = data.list[startIndex].main.temp_max;
+    let lowTemp = data.list[startIndex].main.temp_min ;
+    for(let i = startIndex + 1; i < startIndex+7; i++)
+    {
+        if(lowTemp > data.list[i].main.temp_min) lowTemp = data.list[i].main.temp_min;
+
+        if(highTemp < data.list[i].main.temp_max) highTemp = data.list[i].main.temp_max;
+    }
+    return `H: ${convertKToF(highTemp)}° L: ${convertKToF(lowTemp)}°`
 
 }
 
@@ -135,23 +147,23 @@ const displayCurrentCity = (currentCityData) => {
     console.log(currentCityData.list[7].dt_txt)
     firstDayOfWeek.textContent = getDayOfWeek(currentCityData.list[7].dt_txt);
     firstIconWeather.src = getWeatherIcon(currentCityData.list[7].weather[0].icon);
-    firstHighNLowTemps.textContent  //function to return HIGHS and LOWS
+    firstHighNLowTemps.textContent = getHighNLow(currentCityData, 1);
 
     secondDayOfWeek.textContent = getDayOfWeek(currentCityData.list[15].dt_txt)
     secondIconWeather.src = getWeatherIcon(currentCityData.list[15].weather[0].icon);
-    secondHighNLowTemps.textContent  //function to return HIGHS and LOWS
+    secondHighNLowTemps.textContent = getHighNLow(currentCityData, 9);
 
     thirdDayOfWeek.textContent = getDayOfWeek(currentCityData.list[23].dt_txt)
     thirdIconWeather.src = getWeatherIcon(currentCityData.list[23].weather[0].icon);
-    thirdHighNLowTemps.textContent  //function to return HIGHS and LOWS
+    thirdHighNLowTemps.textContent = getHighNLow(currentCityData, 17);
 
     fourthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[31].dt_txt)
     fourthIconWeather.src = getWeatherIcon(currentCityData.list[31].weather[0].icon);
-    fourthHighNLowTemps.textContent  //function to return HIGHS and LOWS
+    fourthHighNLowTemps.textContent  = getHighNLow(currentCityData, 25);
 
     fifthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[39].dt_txt)
     fifthIconWeather.src = getWeatherIcon(currentCityData.list[39].weather[0].icon);
-    fifthHighNLowTemps.textContent  //function to return HIGHS and LOWS
+    fifthHighNLowTemps.textContent = getHighNLow(currentCityData, 33);
 }
 const geoLocation = () => {
     // Check if the browser supports geolocation
