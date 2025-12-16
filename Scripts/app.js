@@ -1,6 +1,6 @@
-import { API_KEY } from "./environment";
+// import { API_KEY } from "./environment.js";
 // Declare JS DOM variables
-    //inputs
+//inputs
 const inputCity = document.getElementById("inputCity");
 
 const currentCityName = document.getElementById("currentCityName");
@@ -38,6 +38,7 @@ let favoriteBool = false;
 // let currentCity = "Stockton"
 let currentCityData;
 
+
 const getData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
     const data = await response.json();
@@ -51,8 +52,65 @@ const getGeoLocationData = async (lat, long) => {
     const data = await response.json();
     currentCityData = data;
     console.log(data);
-    console.log(data.list);
+    console.log(currentCityData.city.name);
+    console.log(currentCityData.list[0].main.temp);
+    displayCurrentCity(currentCityData);
+}
+const convertKToF = (Kelvin) => {
+    return Math.floor(((Kelvin - 273.15) * 9 / 5) + 32);
+}
+const getWeatherIcon = (iconID) => {
+    switch (iconID) {
+        case "01d":
+            return "./WeatherAssets/yellow-sun.png";
+        case "01n":
+            return "/WeatherAssets/moon.png";
+        case "02d":
+            return "./WeatherAssets/h-cloud.png";
+        case "02n":
+            return "./WeatherAssets/";//find icon for moon behind cloud
+        case "03d":
+            return "./WeatherAssets/clouds.png";
+        case "03n":
+            return "./WeatherAssets/clouds.png";
+        case "04d":
+            return "./WeatherAssets/cloudy.png";
+        case "04n":
+            return "./WeatherAssets/cloudy.png";
+        case "09d":
+            return "./WeatherAssets/rain.png";
+        case "09n":
+            return "./WeatherAssets/rain.png";
+        case "10d":
+            return "./WeatherAssets/rain.png";
+        case "10n":
+            return "./WeatherAssets/rain.png";
+        case "11d":
+            return "./WeatherAssets/thunderstorm-1265161_1280.png";
+        case "11n":
+            return "./WeatherAssets/thunderstorm-1265161_1280.png";
+        case "13d":
+            return "./WeatherAssets/snow.png";
+        case "13n":
+            return "./WeatherAssets/snow.png";
+        case "50d":
+            return "./WeatherAssets/foggy.png";
+        case "50n":
+            return "./WeatherAssets/foggy.png";
+        default:
 
+            break;
+    }
+}
+const displayCurrentCity = (currentCityData) => {
+    currentCityName.textContent = currentCityData.city.name + ` ${currentCityData.city.country}`;
+    currentCityTemp.textContent = convertKToF(currentCityData.list[0].main.temp) + "°";
+    // currentDate.textContent = 
+    let weatherIcon = getWeatherIcon(currentCityData.list[0].weather[0].icon);
+    currentWeatherIcon.src = weatherIcon;
+    currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
+    currentHighTemp.textContent = "H: " + convertKToF(currentCityData.list[0].main.temp_max) + "°";
+    currentLowTemp.textContent = "L: " + convertKToF(currentCityData.list[0].main.temp_min) + "°";
 }
 const geoLocation = () => {
     // Check if the browser supports geolocation
@@ -68,45 +126,21 @@ const geoLocation = () => {
             console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
             getGeoLocationData(latitude, longitude);
         },
-        // Error callback
-        (error) => {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert().textContent = "User denied the request for Geolocation.";
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert().textContent = "Location information is unavailable.";
-                    break;
-                case error.TIMEOUT:
-                    alert().textContent = "The request to get user location timed out.";
-                    break;
-                default:
-                    alert().textContent = "An unknown error occurred.";
-            }
-        }
+
     );
 };
 
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");
-    if(!favoriteBool) {
+    if (!favoriteBool) {
         toggleFavoriteBtn.src = "./WeatherAssets/heart-red.png"
         favoriteBool = !favoriteBool;
     }
-    else
-    {
+    else {
         toggleFavoriteBtn.src = "./WeatherAssets/heart-outline.png"
         favoriteBool = !favoriteBool;
     }
 })
 
-// Create a function that will display the current temp data
-
-const displayCurrentCity = () => {
-    //currentCityData
-    currentCity.textContent = currentCityData.city.name;
-    console.log( currentCityData.city.name)
-}
 //This function should run when the websites first boots.
-// geoLocation();
-// displayCurrentCity()
+geoLocation();
