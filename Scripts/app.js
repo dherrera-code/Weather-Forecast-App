@@ -24,6 +24,12 @@ const thirdIconWeather = document.getElementById("thirdIconWeather");
 const fourthIconWeather = document.getElementById("fourthIconWeather");
 const fifthIconWeather = document.getElementById("fifthIconWeather");
 
+const firstHighNLowTemps = document.getElementById("firstHighNLowTemps");
+const secondHighNLowTemps = document.getElementById("secondHighNLowTemps");
+const thirdHighNLowTemps = document.getElementById("thirdHighNLowTemps");
+const fourthHighNLowTemps = document.getElementById("fourthHighNLowTemps");
+const fifthHighNLowTemps = document.getElementById("fifthHighNLowTemps");
+
 // Outputs new DOM elements
 const displayFavoriteCity = document.getElementById("displayFavoriteCity");
 
