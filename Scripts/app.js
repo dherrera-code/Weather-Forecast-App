@@ -1,4 +1,4 @@
-// import { API_KEY } from "./environment.js";
+import { API_KEY } from "./environment.js";
 // Declare JS DOM variables
 //inputs
 const inputCity = document.getElementById("inputCity");
@@ -105,27 +105,26 @@ const getWeatherIcon = (iconID) => {
 }
 const convertDateToDayOfWeek = (dateString) => {
     let date = dateString.substring(0, 10);
-
-    console.log(new Date(date));
+   
     let savedDate = new Date(date);
-    savedDate = savedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-    let dayOfWeek = new Date(date).getDay();  //returns 0-6 (1)
+savedDate = savedDate.toLocaleDateString('en-US', {year: 'numeric',month: 'short',day: 'numeric'})
+    let dayOfWeek = new Date(savedDate).getDay();  //returns 0-6 (1)
     date.toLocaleString();
     switch (dayOfWeek) {
         case 0:
-            return "Monday " + savedDate;
-        case 1:
-            return "Tuesday " + savedDate;
-        case 2:
-            return "Wednesday " + savedDate;
-        case 3:
-            return "Thursday " + savedDate;
-        case 4:
-            return "Friday " + savedDate;
-        case 5:
-            return "Saturday " + savedDate;
-        case 6:
             return "Sunday " + savedDate;
+        case 1:
+            return "Monday " + savedDate;
+        case 2:
+            return "Tuesday " + savedDate;
+        case 3:
+            return "Wednesday " + savedDate;
+        case 4:
+            return "Thursday " + savedDate;
+        case 5:
+            return "Friday " + savedDate;
+        case 6:
+            return "Saturday " + savedDate;
         default:
             return "Non-dayOfWeek!";
     }
