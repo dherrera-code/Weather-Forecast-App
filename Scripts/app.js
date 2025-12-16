@@ -103,43 +103,55 @@ const getWeatherIcon = (iconID) => {
             break;
     }
 }
-const convertDateToDayOfWeek = (dateString) => {
+const getCurrentDate = (dateString) => {
     let date = dateString.substring(0, 10);
    
     let savedDate = new Date(date);
 savedDate = savedDate.toLocaleDateString('en-US', {year: 'numeric',month: 'short',day: 'numeric'})
     let dayOfWeek = new Date(savedDate).getDay();  //returns 0-6 (1)
     date.toLocaleString();
-    switch (dayOfWeek) {
-        case 0:
-            return "Sunday " + savedDate;
-        case 1:
-            return "Monday " + savedDate;
-        case 2:
-            return "Tuesday " + savedDate;
-        case 3:
-            return "Wednesday " + savedDate;
-        case 4:
-            return "Thursday " + savedDate;
-        case 5:
-            return "Friday " + savedDate;
-        case 6:
-            return "Saturday " + savedDate;
-        default:
-            return "Non-dayOfWeek!";
-    }
+    const dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    return dayArray[dayOfWeek] + ` ${savedDate}`;
+}
+const getDayOfWeek = (dateString) => {
+    let newDate = new Date(dateString).getDay();
+    console.log(newDate+ " " + new Date(dateString))
+    const dayArray = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+    return dayArray[newDate];
 
 }
+
 const displayCurrentCity = (currentCityData) => {
     currentCityName.textContent = currentCityData.city.name + ` ${currentCityData.city.country}`;
     currentCityTemp.textContent = convertKToF(currentCityData.list[0].main.temp) + "°";
     console.log(currentCityData.list[0].dt_txt);
-    currentDate.textContent = convertDateToDayOfWeek(currentCityData.list[0].dt_txt)
-    let weatherIcon = getWeatherIcon(currentCityData.list[0].weather[0].icon);
-    currentWeatherIcon.src = weatherIcon;
+    currentDate.textContent = getCurrentDate(currentCityData.list[0].dt_txt)
+    currentWeatherIcon.src = getWeatherIcon(currentCityData.list[0].weather[0].icon);
     currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
     currentHighTemp.textContent = "H: " + convertKToF(currentCityData.list[0].main.temp_max) + "°";
     currentLowTemp.textContent = "L: " + convertKToF(currentCityData.list[0].main.temp_min) + "°";
+
+    //Add a way to grab forecast data for next 5 days
+    console.log(currentCityData.list[7].dt_txt)
+    firstDayOfWeek.textContent = getDayOfWeek(currentCityData.list[7].dt_txt);
+    firstIconWeather.src = getWeatherIcon(currentCityData.list[7].weather[0].icon);
+    firstHighNLowTemps.textContent  //function to return HIGHS and LOWS
+
+    secondDayOfWeek.textContent = getDayOfWeek(currentCityData.list[15].dt_txt)
+    secondIconWeather.src = getWeatherIcon(currentCityData.list[15].weather[0].icon);
+    secondHighNLowTemps.textContent  //function to return HIGHS and LOWS
+
+    thirdDayOfWeek.textContent = getDayOfWeek(currentCityData.list[23].dt_txt)
+    thirdIconWeather.src = getWeatherIcon(currentCityData.list[23].weather[0].icon);
+    thirdHighNLowTemps.textContent  //function to return HIGHS and LOWS
+
+    fourthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[31].dt_txt)
+    fourthIconWeather.src = getWeatherIcon(currentCityData.list[31].weather[0].icon);
+    fourthHighNLowTemps.textContent  //function to return HIGHS and LOWS
+
+    fifthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[39].dt_txt)
+    fifthIconWeather.src = getWeatherIcon(currentCityData.list[39].weather[0].icon);
+    fifthHighNLowTemps.textContent  //function to return HIGHS and LOWS
 }
 const geoLocation = () => {
     // Check if the browser supports geolocation
