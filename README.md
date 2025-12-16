@@ -1,10 +1,12 @@
 #Daniel Herrera
 
-Weather Sprint Day 1 (12/15): Initialized Repo, started structuring the layout of the webpages and implemented a function to grab data from the weather API and console.log the data. 
+Weather Sprint Day 1 (12/15): Initialized Repo, re-created the structure of both weather pages and created ID tags for all necessary HTML Elements within HOME Page.
+Implemented a function to call API data from OpenWEather API!
 
-Todays goals: complete structure and API calls into console.
 
-Notes from client: 
+Todays goals: complete structure and API calls into console. (complete)
+
+Notes from Pallavi: 
     Two pages:
     Search bar has no dropdown
     Home will use geolocation at start!
