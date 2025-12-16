@@ -35,17 +35,60 @@ const displayFavoriteCity = document.getElementById("displayFavoriteCity");
 
 let favoriteBool = false;
 let currentCity = "Stockton"
+let currentCityData;
 
 const getData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=41f2b9edc30c8f24fe8fcaca12ae33f7`);
     const data = await response.json();
+    currentCityData = data;
     console.log(data);
     console.log(data.list)
 }
-getData(currentCity) 
-// currentCity = "Buckeye"
-// getData(currentCity) 
 
+const getGeoLocationData = async (lat, long) => {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=41f2b9edc30c8f24fe8fcaca12ae33f7`);
+    const data = await response.json();
+    currentCityData = data;
+    console.log(data);
+    console.log(data.list);
+
+}
+
+const geoLocation = () => {
+    // Check if the browser supports geolocation
+    if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser.");
+        return;
+    }
+    navigator.geolocation.getCurrentPosition(
+        // Success callback
+        (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            
+            console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+            getGeoLocationData(latitude, longitude);
+        },
+        // Error callback
+        (error) => {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert().textContent = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert().textContent = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    alert().textContent = "The request to get user location timed out.";
+                    break;
+                default:
+                    alert().textContent = "An unknown error occurred.";
+            }
+        }
+    );
+};
+//This function should run when the websites first boots.
+geoLocation();
 
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");
