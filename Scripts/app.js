@@ -1,7 +1,8 @@
-
+import { API_KEY } from "./environment";
 // Declare JS DOM variables
     //inputs
 const inputCity = document.getElementById("inputCity");
+
 const currentCityName = document.getElementById("currentCityName");
 const currentCityTemp = document.getElementById("currentCityTemp");
 const currentDate = document.getElementById("currentDate");
@@ -34,7 +35,7 @@ const fifthHighNLowTemps = document.getElementById("fifthHighNLowTemps");
 const displayFavoriteCity = document.getElementById("displayFavoriteCity");
 
 let favoriteBool = false;
-let currentCity = "Stockton"
+// let currentCity = "Stockton"
 let currentCityData;
 
 const getData = async (currentCity) => {
@@ -85,8 +86,6 @@ const geoLocation = () => {
         }
     );
 };
-//This function should run when the websites first boots.
-// geoLocation();
 
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");
@@ -100,3 +99,14 @@ toggleFavoriteBtn.addEventListener("click", () => {
         favoriteBool = !favoriteBool;
     }
 })
+
+// Create a function that will display the current temp data
+
+const displayCurrentCity = () => {
+    //currentCityData
+    currentCity.textContent = currentCityData.city.name;
+    console.log( currentCityData.city.name)
+}
+//This function should run when the websites first boots.
+// geoLocation();
+// displayCurrentCity()
