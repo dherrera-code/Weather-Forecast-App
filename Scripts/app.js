@@ -1,4 +1,4 @@
-// import { API_KEY } from "./environment.js";
+import { API_KEY } from "./environment.js";
 // Declare JS DOM variables
 //inputs
 const inputCity = document.getElementById("inputCity");
@@ -83,7 +83,7 @@ const getWeatherIcon = (iconID) => {
         case "09n":
             return "./WeatherAssets/rain.png";
         case "10d":
-            return "./WeatherAssets/rain.png";
+            return "./WeatherAssets/sunAndRainy.png";
         case "10n":
             return "./WeatherAssets/rain.png";
         case "11d":
@@ -99,17 +99,14 @@ const getWeatherIcon = (iconID) => {
         case "50n":
             return "./WeatherAssets/foggy.png";
         default:
-
             break;
     }
 }
 const getCurrentDate = (dateString) => {
-    let date = dateString.substring(0, 10);
 
-    let savedDate = new Date(date);
+    let savedDate = new Date(dateString);
     savedDate = savedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
     let dayOfWeek = new Date(savedDate).getDay();  //returns 0-6 (1)
-    date.toLocaleString();
     const dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return dayArray[dayOfWeek] + ` ${savedDate}`;
 }
