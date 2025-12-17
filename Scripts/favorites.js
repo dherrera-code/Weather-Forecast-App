@@ -1,6 +1,9 @@
 
 
-const inputCity = document.getElementById("inputCity")
+const inputCity = document.getElementById("inputCity");
+
+// Outputs new DOM elements
+const displayFavoriteCity = document.getElementById("displayFavoriteCity");
 
 inputCity.addEventListener("keypress", (event) => {
 

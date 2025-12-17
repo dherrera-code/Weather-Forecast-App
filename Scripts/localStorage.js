@@ -6,7 +6,7 @@ const saveFavorites = (cityName) => {
     console.log(cityArray.length)
 
     if (!cityArray.includes(cityName)) {
-        if (cityArray.length > 6) {
+        if (cityArray.length > 5) {
             cityArray.pop();
         }
         cityArray.unshift(cityName)
@@ -30,6 +30,7 @@ const removeFavoriteCity = (city) => {
     let cityIndex = cityArray.indexOf(city);
 
     cityArray.splice(cityIndex, 1);
+    console.log(cityArray)
     localStorage.setItem("favoriteCities", JSON.stringify(cityArray))
 
 }

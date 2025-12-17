@@ -1,4 +1,4 @@
-// import { API_KEY } from "./environment.js";
+import { API_KEY } from "./environment.js";
 
 import {saveFavorites, getFromLocalStorage, removeFavoriteCity} from "./localStorage.js"
 // Declare JS DOM variables
@@ -32,13 +32,9 @@ const thirdHighNLowTemps = document.getElementById("thirdHighNLowTemps");
 const fourthHighNLowTemps = document.getElementById("fourthHighNLowTemps");
 const fifthHighNLowTemps = document.getElementById("fifthHighNLowTemps");
 
-// Outputs new DOM elements
-const displayFavoriteCity = document.getElementById("displayFavoriteCity");
-
-let favoriteBool = false;
 // let currentCity = "Stockton"
 let currentCityData;
-
+let favoriteBool
 
 const getCityData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
@@ -51,6 +47,7 @@ const getCityData = async (currentCity) => {
         alert("Please Enter a valid city name!");
     }
     else {
+        isFavorite(currentCityData.city.name);
         displayCurrentCity(currentCityData);
     }
 }
@@ -59,10 +56,26 @@ const getGeoLocationData = async (lat, long) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
+    isFavorite(currentCityData.city.name);
+    console.log(favoriteBool);
     // console.log(data);
     // console.log(currentCityData.city.name);
     // console.log(currentCityData.list[0].main.temp);
     displayCurrentCity(currentCityData);
+}
+const isFavorite = (city) => {
+
+    let favCityArr = getFromLocalStorage();
+    favoriteBool = false;
+    toggleFavoriteBtn.src = "./WeatherAssets/heart-outline.png"
+    for(let i = 0; i < favCityArr.length; i++)
+    {
+        if(favCityArr[i] === city)
+        {
+            favoriteBool = true;
+            toggleFavoriteBtn.src = "./WeatherAssets/heart-red.png"
+        }
+    }
 }
 const convertKToF = (Kelvin) => {
     return Math.floor(((Kelvin - 273.15) * 9 / 5) + 32);
@@ -183,15 +196,24 @@ const geoLocation = () => {
 
     );
 };
+
+
+// let favoriteBool = false;
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");
-    if (!favoriteBool) {
+    let cityName = currentCityName.textContent.split(" "); //returns current city in array index 0. 
+    console.log(cityName[0])
+
+
+    if (!favoriteBool) { //if not favorited, then add to favorites
         toggleFavoriteBtn.src = "./WeatherAssets/heart-red.png"
         favoriteBool = !favoriteBool;
+        saveFavorites(cityName[0])
     }
-    else {
+    else { //this will remove city name from local storage
         toggleFavoriteBtn.src = "./WeatherAssets/heart-outline.png"
         favoriteBool = !favoriteBool;
+        removeFavoriteCity(cityName[0]);
     }
 })
 //This function should run when the websites first boots.
