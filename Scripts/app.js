@@ -73,11 +73,11 @@ const getWeatherIcon = (iconID) => {
         case "01d":
             return "./WeatherAssets/yellow-sun.png";
         case "01n":
-            return "/WeatherAssets/moon.png";
+            return "/WeatherAssets/crescentMoon.png";
         case "02d":
             return "./WeatherAssets/h-cloud.png";
         case "02n":
-            return "./WeatherAssets/";//find icon for moon behind cloud
+            return "./WeatherAssets/moonAndCloud.png";//find icon for moon behind cloud
         case "03d":
             return "./WeatherAssets/clouds.png";
         case "03n":
