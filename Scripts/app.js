@@ -44,9 +44,16 @@ const getCityData = async (currentCity) => {
     const data = await response.json();
     currentCityData = data;
     console.log(data);
-    console.log(data.list);
-    //call necessary functions to display newly selected city
-    displayCurrentCity(currentCityData);
+    console.log(data.message);
+    if(data.message === "city not found")
+    {
+        alert("Please Enter a valid city name!");
+    }
+    else
+    {
+        displayCurrentCity(currentCityData);
+
+    }
 }
 
 const getGeoLocationData = async (lat, long) => {
