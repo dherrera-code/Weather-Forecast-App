@@ -9,6 +9,8 @@ Tuesday goals: The goal is to be around 25-45% done with your layout.
 wednesday: completed geolocation functionality when index first boots and implemented the search city functionality with input validation.
 (Starting to implement favorites functionality) (local storage getting used)
 
+// Implement a way to display favorite cities within favorites page!
+
 Notes from Pallavi: 
     Two pages:
     Search bar has no dropdown

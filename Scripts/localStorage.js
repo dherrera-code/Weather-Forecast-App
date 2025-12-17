@@ -35,5 +35,4 @@ const removeFavoriteCity = (city) => {
 
 }
 
-//create a function that will display favorites within the favorites.html
 export {saveFavorites , getFromLocalStorage, removeFavoriteCity}
