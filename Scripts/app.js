@@ -45,14 +45,12 @@ const getCityData = async (currentCity) => {
     currentCityData = data;
     console.log(data);
     console.log(data.message);
-    if(data.message === "city not found")
-    {
+    console.log(currentCity)
+    if (data.message === "city not found") {
         alert("Please Enter a valid city name!");
     }
-    else
-    {
+    else {
         displayCurrentCity(currentCityData);
-
     }
 }
 
@@ -77,7 +75,7 @@ const getWeatherIcon = (iconID) => {
         case "02d":
             return "./WeatherAssets/h-cloud.png";
         case "02n":
-            return "./WeatherAssets/moonAndCloud.png";//find icon for moon behind cloud
+            return "./WeatherAssets/moonAndCloud.png";
         case "03d":
             return "./WeatherAssets/clouds.png";
         case "03n":
@@ -126,12 +124,11 @@ const getDayOfWeek = (dateString) => {
 }
 const getHighNLow = (data, startIndex) => {
     let highTemp = data.list[startIndex].main.temp_max;
-    let lowTemp = data.list[startIndex].main.temp_min ;
-    for(let i = startIndex + 1; i < startIndex+7; i++)
-    {
-        if(lowTemp > data.list[i].main.temp_min) lowTemp = data.list[i].main.temp_min;
+    let lowTemp = data.list[startIndex].main.temp_min;
+    for (let i = startIndex + 1; i < startIndex + 7; i++) {
+        if (lowTemp > data.list[i].main.temp_min) lowTemp = data.list[i].main.temp_min;
 
-        if(highTemp < data.list[i].main.temp_max) highTemp = data.list[i].main.temp_max;
+        if (highTemp < data.list[i].main.temp_max) highTemp = data.list[i].main.temp_max;
     }
     return `H: ${convertKToF(highTemp)}° L: ${convertKToF(lowTemp)}°`
 
@@ -162,7 +159,7 @@ const displayCurrentCity = (currentCityData) => {
 
     fourthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[31].dt_txt)
     fourthIconWeather.src = getWeatherIcon(currentCityData.list[31].weather[0].icon);
-    fourthHighNLowTemps.textContent  = getHighNLow(currentCityData, 25);
+    fourthHighNLowTemps.textContent = getHighNLow(currentCityData, 25);
 
     fifthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[39].dt_txt)
     fifthIconWeather.src = getWeatherIcon(currentCityData.list[39].weather[0].icon);
@@ -200,14 +197,19 @@ toggleFavoriteBtn.addEventListener("click", () => {
 geoLocation();
 
 inputCity.addEventListener("keypress", (event) => {
-    console.log(event);
-    if(event.key === "Enter"){
+    // console.log(event);
+    if (event.key === "Enter") {
 
         console.log("you have pressed Enter!");
         // If user entered state code or country code
-        // insert a function that will call the API and display input city,
         // implement input validation.
-        getCityData(inputCity.value);
+        if (inputCity.value.includes(" ")) {
+            let cityName = inputCity.value.split(" ").join(",");
+            console.log(cityName)
+            getCityData(cityName);
+        }
+        else getCityData(inputCity.value);
+
         inputCity.value = "";
     }
 })
