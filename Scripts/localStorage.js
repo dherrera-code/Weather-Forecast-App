@@ -1,7 +1,7 @@
 //Create Functions to Save favorites, delete favorites, getFromLocalStorage and update display favorites. 
 const saveFavorites = (cityName) => {
     //This function will fire when user toggles on the favorites button
-    //Add logic to where at most 5 cities are saved and last city is removed.
+    //Add logic to where at most 6 cities are saved and last city is removed.
     let cityArray = getFromLocalStorage();
     console.log(cityArray.length)
 
@@ -34,4 +34,6 @@ const removeFavoriteCity = (city) => {
     localStorage.setItem("favoriteCities", JSON.stringify(cityArray))
 
 }
+
+//create a function that will display favorites within the favorites.html
 export {saveFavorites , getFromLocalStorage, removeFavoriteCity}

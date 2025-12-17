@@ -205,7 +205,7 @@ toggleFavoriteBtn.addEventListener("click", () => {
     console.log(cityName[0])
 
 
-    if (!favoriteBool) { //if not favorited, then add to favorites
+    if (!favoriteBool) { //if not favored, then add to favorites
         toggleFavoriteBtn.src = "./WeatherAssets/heart-red.png"
         favoriteBool = !favoriteBool;
         saveFavorites(cityName[0])

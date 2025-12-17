@@ -6,6 +6,8 @@ Implemented a function to call API data from OpenWEather API!
 
 Monday goals: complete structure and API calls into console. (complete)
 Tuesday goals: The goal is to be around 25-45% done with your layout.
+wednesday: completed geolocation functionality when index first boots and implemented the search city functionality with input validation.
+(Starting to implement favorites functionality) (local storage getting used)
 
 Notes from Pallavi: 
     Two pages:
