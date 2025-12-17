@@ -1,6 +1,6 @@
-import { API_KEY } from "./environment.js";
+// import { API_KEY } from "./environment.js";
+
 // Declare JS DOM variables
-// input
 const inputCity = document.getElementById("inputCity");
 
 const currentCityName = document.getElementById("currentCityName");
@@ -43,9 +43,9 @@ const getCityData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
-    console.log(data);
-    console.log(data.message);
-    console.log(currentCity)
+    // console.log(data);
+    // console.log(data.message);
+    // console.log(currentCity)
     if (data.message === "city not found") {
         alert("Please Enter a valid city name!");
     }
@@ -58,9 +58,9 @@ const getGeoLocationData = async (lat, long) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
-    console.log(data);
-    console.log(currentCityData.city.name);
-    console.log(currentCityData.list[0].main.temp);
+    // console.log(data);
+    // console.log(currentCityData.city.name);
+    // console.log(currentCityData.list[0].main.temp);
     displayCurrentCity(currentCityData);
 }
 const convertKToF = (Kelvin) => {
@@ -194,7 +194,8 @@ toggleFavoriteBtn.addEventListener("click", () => {
     }
 })
 //This function should run when the websites first boots.
-geoLocation();
+// geoLocation();
+window.addEventListener("load", geoLocation())
 
 inputCity.addEventListener("keypress", (event) => {
     // console.log(event);
