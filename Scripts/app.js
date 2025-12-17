@@ -1,4 +1,4 @@
-import { API_KEY } from "./environment.js";
+// import { API_KEY } from "./environment.js";
 // Declare JS DOM variables
 //inputs
 const inputCity = document.getElementById("inputCity");
@@ -119,7 +119,6 @@ const getDayOfWeek = (dateString) => {
     const dayArray = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
     return dayArray[newDate];
 }
-
 const getHighNLow = (data, startIndex) => {
     let highTemp = data.list[startIndex].main.temp_max;
     let lowTemp = data.list[startIndex].main.temp_min ;
@@ -132,7 +131,6 @@ const getHighNLow = (data, startIndex) => {
     return `H: ${convertKToF(highTemp)}° L: ${convertKToF(lowTemp)}°`
 
 }
-
 const displayCurrentCity = (currentCityData) => {
     currentCityName.textContent = currentCityData.city.name + ` ${currentCityData.city.country}`;
     currentCityTemp.textContent = convertKToF(currentCityData.list[0].main.temp) + "°";
@@ -182,7 +180,6 @@ const geoLocation = () => {
 
     );
 };
-
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");
     if (!favoriteBool) {
@@ -194,6 +191,14 @@ toggleFavoriteBtn.addEventListener("click", () => {
         favoriteBool = !favoriteBool;
     }
 })
-
 //This function should run when the websites first boots.
 geoLocation();
+
+inputCity.addEventListener("keypress", (event) => {
+    console.log(event);
+    if(event.key === "Enter"){
+
+        console.log("you have pressed Enter!")
+        //insert a function that will call the API and display input city, 
+    }
+})
