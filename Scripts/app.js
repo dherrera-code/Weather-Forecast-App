@@ -1,5 +1,6 @@
 // import { API_KEY } from "./environment.js";
 
+import {saveFavorites, getFromLocalStorage, removeFavoriteCity} from "./localStorage.js"
 // Declare JS DOM variables
 const inputCity = document.getElementById("inputCity");
 
