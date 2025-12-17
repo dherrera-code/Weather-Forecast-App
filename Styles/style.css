@@ -41,9 +41,10 @@ body{
 .fontIceberg{
     font-family: Iceberg;
 }
-/* ENd of font classes */
+/* End of font classes */
 .x-button{
     width: 30px;
     margin-left: auto;
     margin-top: 20px;
+    border-radius: 10px;
 }
