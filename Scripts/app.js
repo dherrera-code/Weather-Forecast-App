@@ -1,6 +1,6 @@
 import { API_KEY } from "./environment.js";
 // Declare JS DOM variables
-//inputs
+// input
 const inputCity = document.getElementById("inputCity");
 
 const currentCityName = document.getElementById("currentCityName");
@@ -39,13 +39,14 @@ let favoriteBool = false;
 let currentCityData;
 
 
-const getData = async (currentCity) => {
+const getCityData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
     console.log(data);
     console.log(data.list);
     //call necessary functions to display newly selected city
+    displayCurrentCity(currentCityData);
 }
 
 const getGeoLocationData = async (lat, long) => {
@@ -195,7 +196,11 @@ inputCity.addEventListener("keypress", (event) => {
     console.log(event);
     if(event.key === "Enter"){
 
-        console.log("you have pressed Enter!")
-        //insert a function that will call the API and display input city, 
+        console.log("you have pressed Enter!");
+        // If user entered state code or country code
+        // insert a function that will call the API and display input city,
+        // implement input validation.
+        getCityData(inputCity.value);
+        inputCity.value = "";
     }
 })
