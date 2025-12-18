@@ -237,10 +237,16 @@ inputCity.addEventListener("keypress", (event) => {
         console.log("you have pressed Enter!");
         // If user entered state code or country code
         // implement input validation.
-        if (inputCity.value.includes(" ")) {
-            let cityName = inputCity.value.split(" ").join(",");
-            console.log(cityName)
-            getCityData(cityName);
+        if (inputCity.value.includes(",")) {
+            let cityName = inputCity.value.split(",");
+            let index = 0;
+            cityName.forEach(i => {
+                cityName[index] = i.trim();
+                index++;
+            });
+
+            // console.log(cityName.trim())
+            getCityData(cityName.toString());
         }
         else getCityData(inputCity.value);
 

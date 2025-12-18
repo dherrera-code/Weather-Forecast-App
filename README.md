@@ -8,8 +8,8 @@ Monday goals: complete structure and API calls into console. (complete)
 Tuesday goals: The goal is to be around 25-45% done with your layout.
 wednesday: completed geolocation functionality when index first boots and implemented the search city functionality with input validation.
 (Finished implementing favorites functionality Both Pages) (local storage getting used)
-thursday: fix search engine to get data for cities with two words. 
-        Add Modal into input validation!
+thursday: fix search engine to get data for cities with two words. (fixed)
+        Add Modal into input validation! (Implemented!)
         Adjust font size and add font families.
 
 
