@@ -228,7 +228,20 @@ toggleFavoriteBtn.addEventListener("click", () => {
 })
 //This function should run when the websites first boots.
 // geoLocation();
-window.addEventListener("load", geoLocation())
+
+window.addEventListener("load", () => {
+
+    //Add logic to test if input was received from favorites page
+    //else 
+        const city = sessionStorage.getItem("searchCity")
+        console.log(city)
+        if(city != null)
+        {
+            getCityData(city)
+        }
+        else
+        geoLocation()
+})
 
 inputCity.addEventListener("keypress", (event) => {
     // console.log(event);

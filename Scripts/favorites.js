@@ -29,7 +29,7 @@ const getWeatherIcon = (iconID) => {
         case "03n":
             return "../WeatherAssets/blue-cloud.png";
         case "04d":
-            return "./WeatherAssets/dark-clouds.png";
+            return "../WeatherAssets/dark-clouds.png";
         case "04n":
             return "../WeatherAssets/dark-clouds.png";
         case "09d":
@@ -135,19 +135,32 @@ const createFavCity = (cityData) => {
 
 inputCity.addEventListener("keypress", (event) => {
 
-    if (event.key === "Enter") {
+        if (event.key === "Enter") {
         let cityName;
-        console.log(inputCity.value);
-        if (inputCity.value.includes(" ")) {
-            cityName = inputCity.value.split(" ").join(",");
-            console.log(cityName);
+        console.log("you have pressed Enter!");
+        // If user entered state code or country code
+        // implement input validation.
+        if (inputCity.value.includes(",")) {
+            cityName = inputCity.value.split(",");
+            let index = 0;
+            cityName.forEach(i => {
+                cityName[index] = i.trim();
+                index++;
+            });
+
         }
-        else cityName = inputCity.value;
+        else
+        {
+            cityName = inputCity.value.trim();
+        }
+            //  getCityData(inputCity.value);
+        console.log(cityName.toString())
         inputCity.value = "";
-        //Call A function to redirect the user back to main page with cityName data displayed within the UI (DOM)
-        //redirect user to home page AND display (city).
+        sessionStorage.setItem("searchCity", cityName.toString())
         window.location.href = "../index.html";
+
     }
+    
 });
 const displayFavorites = () => {
     let cityArray = getFromLocalStorage();
