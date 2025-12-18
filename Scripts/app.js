@@ -155,11 +155,13 @@ const displayCurrentCity = (currentCityData) => {
     currentWeatherIcon.src = getWeatherIcon(currentCityData.list[0].weather[0].icon);
     currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
     let lowTemp;
-    if (data.list[1].main.temp_min > data.list[0].main.temp_min) lowTemp = data.list[0].main.temp_min;
-    else lowTemp = data.list[1].main.temp_min;
+    if (currentCityData.list[1].main.temp_min > currentCityData.list[0].main.temp_min)
+        lowTemp = currentCityData.list[0].main.temp_min;
+    else 
+        lowTemp = currentCityData.list[1].main.temp_min;
     let highTemp
-    if (data.list[1].main.temp_max > data.list[0].main.temp_max) highTemp = data.list[0].main.temp_max;
-    else highTemp = data.list[1].main.temp_max;
+    if (currentCityData.list[1].main.temp_max > currentCityData.list[0].main.temp_max) highTemp = currentCityData.list[0].main.temp_max;
+    else highTemp = currentCityData.list[1].main.temp_max;
     
     currentHighTemp.textContent = "H: " + convertKToF(highTemp) + "°";
     currentLowTemp.textContent = "L: " + convertKToF(lowTemp) + "°";
@@ -204,13 +206,11 @@ const geoLocation = () => {
     );
 };
 
-
 // let favoriteBool = false;
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");
     let cityName = currentCityName.textContent.split(" "); //returns current city in array index 0. 
     console.log(cityName[0])
-
 
     if (!favoriteBool) { //if not favored, then add to favorites
         toggleFavoriteBtn.src = "./WeatherAssets/heart-red.png"

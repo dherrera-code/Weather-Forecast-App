@@ -7,7 +7,6 @@ const inputCity = document.getElementById("inputCity");
 const displayFavoriteCity = document.getElementById("displayFavoriteCity");
 
 const getCityData = async (cityName) => {
-
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}`);
     const data = await response.json();
     console.log(data);
@@ -31,7 +30,8 @@ const createFavCity = (cityData) => {
         cityName.textContent = "Stockton"
     const currentTemp = document.createElement('p');
         currentTemp.textContent = "45°"
-    cityTempCol.appendChild(cityName, currentTemp); 
+    cityTempCol.appendChild(cityName); 
+    cityTempCol.appendChild(currentTemp); 
      //verify that elements were appended appropriately]
     const iconDiv = document.createElement("div");
     iconDiv.className = "col d-flex flex-column"
@@ -41,21 +41,28 @@ const createFavCity = (cityData) => {
     deleteBtn.src = "../WeatherAssets/x-button.png";
 
     const weatherIcon = document.createElement("img");
+    weatherIcon.style = "width: 100px;";
+    weatherIcon.class = "mx-auto"
     weatherIcon.src = "../WeatherAssets/clouds.png" //Add a function to get current weather based on data.
 
-iconDiv.appendChild(deleteBtn, weatherIcon);
+iconDiv.appendChild(deleteBtn);
+iconDiv.appendChild(weatherIcon);
 
-topRow.appendChild(cityTempCol, iconDiv)
+topRow.appendChild(cityTempCol)
+topRow.appendChild(iconDiv)
 
 const highNLowDiv = document.createElement("div")
 highNLowDiv.className = "d-flex align-items-end justify-content-center";
 const hTemp = document.createElement('p')
 hTemp.className = "pe-5"
-hTemp.textContent = "60°"
+hTemp.textContent = "H: 60°"
 const lTemp = document.createElement('p')
-lTemp.textContent = "30°"
+lTemp.textContent = "L: 30°"
 
-highNLowDiv.appendChild(hTemp, lTemp);
+highNLowDiv.appendChild(hTemp);
+highNLowDiv.appendChild(lTemp);
+cardContainer.appendChild(topRow);
+
 cardContainer.appendChild(highNLowDiv);
 mainCol.appendChild(cardContainer);
 displayFavoriteCity.appendChild(mainCol);
