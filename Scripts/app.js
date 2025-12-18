@@ -40,7 +40,7 @@ const getCityData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
-    // console.log(data);
+    console.log(data);
     // console.log(data.message);
     // console.log(currentCity)
     if (data.message === "city not found") {
@@ -58,7 +58,7 @@ const getGeoLocationData = async (lat, long) => {
     currentCityData = data;
     isFavorite(currentCityData.city.name);
     console.log(favoriteBool);
-    // console.log(data);
+    console.log(data);
     // console.log(currentCityData.city.name);
     // console.log(currentCityData.list[0].main.temp);
     displayCurrentCity(currentCityData);
@@ -154,26 +154,33 @@ const displayCurrentCity = (currentCityData) => {
     currentDate.textContent = getCurrentDate(currentCityData.list[0].dt_txt)
     currentWeatherIcon.src = getWeatherIcon(currentCityData.list[0].weather[0].icon);
     currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
-    currentHighTemp.textContent = "H: " + convertKToF(currentCityData.list[0].main.temp_max) + "°";
-    currentLowTemp.textContent = "L: " + convertKToF(currentCityData.list[0].main.temp_min) + "°";
+    let lowTemp;
+    if (data.list[1].main.temp_min > data.list[0].main.temp_min) lowTemp = data.list[0].main.temp_min;
+    else lowTemp = data.list[1].main.temp_min;
+    let highTemp
+    if (data.list[1].main.temp_max > data.list[0].main.temp_max) highTemp = data.list[0].main.temp_max;
+    else highTemp = data.list[1].main.temp_max;
+    
+    currentHighTemp.textContent = "H: " + convertKToF(highTemp) + "°";
+    currentLowTemp.textContent = "L: " + convertKToF(lowTemp) + "°";
 
     //Add a way to grab forecast data for next 5 days
     console.log(currentCityData.list[7].dt_txt)
     firstDayOfWeek.textContent = getDayOfWeek(currentCityData.list[7].dt_txt);
-    firstIconWeather.src = getWeatherIcon(currentCityData.list[7].weather[0].icon);
-    firstHighNLowTemps.textContent = getHighNLow(currentCityData, 1);
+    firstIconWeather.src = getWeatherIcon(currentCityData.list[8].weather[0].icon);
+    firstHighNLowTemps.textContent = getHighNLow(currentCityData, 2);
 
     secondDayOfWeek.textContent = getDayOfWeek(currentCityData.list[15].dt_txt)
     secondIconWeather.src = getWeatherIcon(currentCityData.list[15].weather[0].icon);
-    secondHighNLowTemps.textContent = getHighNLow(currentCityData, 9);
+    secondHighNLowTemps.textContent = getHighNLow(currentCityData, 10);
 
     thirdDayOfWeek.textContent = getDayOfWeek(currentCityData.list[23].dt_txt)
     thirdIconWeather.src = getWeatherIcon(currentCityData.list[23].weather[0].icon);
-    thirdHighNLowTemps.textContent = getHighNLow(currentCityData, 17);
+    thirdHighNLowTemps.textContent = getHighNLow(currentCityData, 18);
 
     fourthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[31].dt_txt)
     fourthIconWeather.src = getWeatherIcon(currentCityData.list[31].weather[0].icon);
-    fourthHighNLowTemps.textContent = getHighNLow(currentCityData, 25);
+    fourthHighNLowTemps.textContent = getHighNLow(currentCityData, 26);
 
     fifthDayOfWeek.textContent = getDayOfWeek(currentCityData.list[39].dt_txt)
     fifthIconWeather.src = getWeatherIcon(currentCityData.list[39].weather[0].icon);
