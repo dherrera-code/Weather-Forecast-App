@@ -26,3 +26,5 @@ Notes from Pallavi:
     Will store 5 favorite cities.
     Functionality: button on all cards that can remove a favorite city.
     search bar will redirect to home page with user inputted city!
+
+Peer Review 1: (name)

@@ -25,13 +25,13 @@ const getWeatherIcon = (iconID) => {
         case "02n":
             return "../WeatherAssets/moonAndCloud.png";
         case "03d":
-            return "../WeatherAssets/clouds.png";
+            return "../WeatherAssets/blue-cloud.png";
         case "03n":
-            return "../WeatherAssets/clouds.png";
+            return "../WeatherAssets/blue-cloud.png";
         case "04d":
-            return "../WeatherAssets/cloudy.png";
+            return "./WeatherAssets/dark-clouds.png";
         case "04n":
-            return "../WeatherAssets/cloudy.png";
+            return "../WeatherAssets/dark-clouds.png";
         case "09d":
             return "../WeatherAssets/rain.png";
         case "09n":
