@@ -2,6 +2,7 @@ import { API_KEY } from "./environment.js";
 
 import {saveFavorites, getFromLocalStorage, removeFavoriteCity} from "./localStorage.js"
 // Declare JS DOM variables
+const displayError = new bootstrap.Modal(document.getElementById("displayError"));
 const inputCity = document.getElementById("inputCity");
 
 const currentCityName = document.getElementById("currentCityName");
@@ -36,6 +37,8 @@ const fifthHighNLowTemps = document.getElementById("fifthHighNLowTemps");
 let currentCityData;
 let favoriteBool;
 
+
+
 const getCityData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
     const data = await response.json();
@@ -44,7 +47,8 @@ const getCityData = async (currentCity) => {
     // console.log(data.message);
     // console.log(currentCity)
     if (data.message === "city not found") {
-        alert("Please Enter a valid city name!");
+        // alert("Please Enter a valid city name!");
+        displayError.show();
     }
     else {
         isFavorite(currentCityData.city.name);
@@ -154,8 +158,8 @@ const displayCurrentCity = (currentCityData) => {
     currentDate.textContent = getCurrentDate(currentCityData.list[0].dt_txt)
     currentWeatherIcon.src = getWeatherIcon(currentCityData.list[0].weather[0].icon);
     currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
-    let lowTemp = cityData.list[0].main.temp_min;
-    let highTemp = cityData.list[0].main.temp_max;
+    let lowTemp = currentCityData.list[0].main.temp_min;
+    let highTemp = currentCityData.list[0].main.temp_max;
     for(let i = 0; i < 4; i++)
     {
         if(lowTemp > currentCityData.list[i].main.temp_min) lowTemp = currentCityData.list[i].main.temp_min

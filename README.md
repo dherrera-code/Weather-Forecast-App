@@ -7,9 +7,13 @@ Implemented a function to call API data from OpenWEather API!
 Monday goals: complete structure and API calls into console. (complete)
 Tuesday goals: The goal is to be around 25-45% done with your layout.
 wednesday: completed geolocation functionality when index first boots and implemented the search city functionality with input validation.
-(Starting to implement favorites functionality) (local storage getting used)
+(Finished implementing favorites functionality Both Pages) (local storage getting used)
+thursday: fix search engine to get data for cities with two words. 
+        Add Modal into input validation!
+        Adjust font size and add font families.
 
-// Implement a way to display favorite cities within favorites page!
+
+// Implement a way to display favorite cities within favorites page! (DONE)
 // Afterwards, implement modal for the alert() error!
 Notes from Pallavi: 
     Two pages:
