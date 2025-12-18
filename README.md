@@ -37,3 +37,5 @@ ex: Tracy, CA shows that on Tue it should be snowing if ou look at the img and t
 
 I couldn't get the search function to work well enough to fill up the Favorites page but i see that you can remove and add to it so good job there
 
+need to add input validation before saving into sessionStorage
+

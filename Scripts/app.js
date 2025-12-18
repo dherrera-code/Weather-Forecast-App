@@ -1,4 +1,4 @@
-import { API_KEY } from "./environment.js";
+import {API_KEY} from "./environment.js";
 
 import {saveFavorites, getFromLocalStorage, removeFavoriteCity} from "./localStorage.js"
 // Declare JS DOM variables
@@ -127,16 +127,20 @@ const getWeatherIcon = (iconID) => {
     }
 }
 const getCurrentDate = (dateString) => {
-
+    dateString = dateString + "Z";
     let savedDate = new Date(dateString);
+    console.log(new Date(dateString+ "Z"))
+
+
     savedDate = savedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-    let dayOfWeek = new Date(savedDate).getDay();  //returns 0-6 (1)
+    console.log(savedDate)
+    let dayOfWeek = new Date(dateString).getDay();  //returns 0-6 (1)
     const dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return dayArray[dayOfWeek] + ` ${savedDate}`;
 }
 const getDayOfWeek = (dateString) => {
-    let newDate = new Date(dateString).getDay();
-    console.log(newDate + " " + new Date(dateString))
+    let newDate = new Date(dateString + "Z").getDay();
+    console.log(newDate + " + " + new Date(dateString))
     const dayArray = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
     return dayArray[newDate];
 }
