@@ -17,41 +17,41 @@ const getCityData = async (cityName) => {
 const getWeatherIcon = (iconID) => {
     switch (iconID) {
         case "01d":
-            return "./WeatherAssets/yellow-sun.png";
+            return "../WeatherAssets/yellow-sun.png";
         case "01n":
-            return "/WeatherAssets/crescentMoon.png";
+            return "../WeatherAssets/crescentMoon.png";
         case "02d":
-            return "./WeatherAssets/h-cloud.png";
+            return "../WeatherAssets/h-cloud.png";
         case "02n":
-            return "./WeatherAssets/moonAndCloud.png";
+            return "../WeatherAssets/moonAndCloud.png";
         case "03d":
-            return "./WeatherAssets/clouds.png";
+            return "../WeatherAssets/clouds.png";
         case "03n":
-            return "./WeatherAssets/clouds.png";
+            return "../WeatherAssets/clouds.png";
         case "04d":
             return "../WeatherAssets/cloudy.png";
         case "04n":
             return "../WeatherAssets/cloudy.png";
         case "09d":
-            return "./WeatherAssets/rain.png";
+            return "../WeatherAssets/rain.png";
         case "09n":
-            return "./WeatherAssets/rain.png";
+            return "../WeatherAssets/rain.png";
         case "10d":
-            return "./WeatherAssets/sunAndRainy.png";
+            return "../WeatherAssets/sunAndRainy.png";
         case "10n":
-            return "./WeatherAssets/rain.png";
+            return "../WeatherAssets/rain.png";
         case "11d":
-            return "./WeatherAssets/thunderstorm-1265161_1280.png";
+            return "../WeatherAssets/thunderstorm-1265161_1280.png";
         case "11n":
-            return "./WeatherAssets/thunderstorm-1265161_1280.png";
+            return "../WeatherAssets/thunderstorm-1265161_1280.png";
         case "13d":
-            return "./WeatherAssets/snow.png";
+            return "../WeatherAssets/snow.png";
         case "13n":
-            return "./WeatherAssets/snow.png";
+            return "../WeatherAssets/snow.png";
         case "50d":
-            return "./WeatherAssets/foggy.png";
+            return "../WeatherAssets/foggy.png";
         case "50n":
-            return "./WeatherAssets/foggy.png";
+            return "../WeatherAssets/foggy.png";
         default:
             break;
     }
@@ -74,7 +74,7 @@ const createFavCity = (cityData) => {
     const cityName = document.createElement("h2");
     cityName.textContent = cityData.city.name;
     const currentTemp = document.createElement('p');
-    currentTemp.textContent = cityData.list[0].main.temp;
+    currentTemp.textContent = convertKToF(cityData.list[0].main.temp) + '°';
     cityTempCol.appendChild(cityName);
     cityTempCol.appendChild(currentTemp);
     //verify that elements were appended appropriately]
@@ -106,17 +106,23 @@ const createFavCity = (cityData) => {
     hTemp.className = "pe-5"
     const lTemp = document.createElement('p')
 
-    let lowTemp;
-    if (cityData.list[1].main.temp_min > cityData.list[0].main.temp_min)
-        lowTemp = cityData.list[0].main.temp_min;
-    else 
-        lowTemp = cityData.list[1].main.temp_min;
-    let highTemp
-    if (cityData.list[1].main.temp_max > cityData.list[0].main.temp_max) highTemp = cityData.list[0].main.temp_max;
-    else highTemp = cityData.list[1].main.temp_max;
+    let lowTemp = cityData.list[0].main.temp_min;
+    let highTemp = cityData.list[0].main.temp_max;
+    for(let i = 0; i < 4; i++)
+    {
+        if(lowTemp > cityData.list[i].main.temp_min) lowTemp = cityData.list[i].main.temp_min
+        if(highTemp < cityData.list[i].main.temp_max) highTemp = cityData.list[i].main.temp_max
+    }
 
-    hTemp.textContent = `H: ${highTemp}°`
-    lTemp.textContent = `L: ${lowTemp}°`
+    // if (cityData.list[1].main.temp_min > cityData.list[0].main.temp_min)
+    //     lowTemp = cityData.list[0].main.temp_min;
+    // else 
+    //     lowTemp = cityData.list[1].main.temp_min;
+    // if (cityData.list[1].main.temp_max > cityData.list[0].main.temp_max) highTemp = cityData.list[0].main.temp_max;
+    // else highTemp = cityData.list[1].main.temp_max;
+
+    hTemp.textContent = `H: ${convertKToF(highTemp)}°`
+    lTemp.textContent = `L: ${convertKToF(lowTemp)}°`
 
     highNLowDiv.appendChild(hTemp);
     highNLowDiv.appendChild(lTemp);

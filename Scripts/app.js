@@ -154,14 +154,13 @@ const displayCurrentCity = (currentCityData) => {
     currentDate.textContent = getCurrentDate(currentCityData.list[0].dt_txt)
     currentWeatherIcon.src = getWeatherIcon(currentCityData.list[0].weather[0].icon);
     currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
-    let lowTemp;
-    if (currentCityData.list[1].main.temp_min > currentCityData.list[0].main.temp_min)
-        lowTemp = currentCityData.list[0].main.temp_min;
-    else 
-        lowTemp = currentCityData.list[1].main.temp_min;
-    let highTemp
-    if (currentCityData.list[1].main.temp_max > currentCityData.list[0].main.temp_max) highTemp = currentCityData.list[0].main.temp_max;
-    else highTemp = currentCityData.list[1].main.temp_max;
+    let lowTemp = cityData.list[0].main.temp_min;
+    let highTemp = cityData.list[0].main.temp_max;
+    for(let i = 0; i < 4; i++)
+    {
+        if(lowTemp > currentCityData.list[i].main.temp_min) lowTemp = currentCityData.list[i].main.temp_min
+        if(highTemp < currentCityData.list[i].main.temp_max) highTemp = currentCityData.list[i].main.temp_max
+    }
     
     currentHighTemp.textContent = "H: " + convertKToF(highTemp) + "°";
     currentLowTemp.textContent = "L: " + convertKToF(lowTemp) + "°";
