@@ -244,3 +244,5 @@ inputCity.addEventListener("keypress", (event) => {
         inputCity.value = "";
     }
 })
+
+// export {getWeatherIcon, convertKToF};

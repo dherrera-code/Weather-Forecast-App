@@ -1,4 +1,5 @@
 import { getFromLocalStorage, saveFavorites, removeFavoriteCity } from "./localStorage.js"
+// import {getWeatherIcon, convertKToF} from "./app.js"
 import { API_KEY } from "./environment.js";
 //create functions: create favoriteCards, deleteFavCards
 const inputCity = document.getElementById("inputCity");
@@ -9,14 +10,58 @@ const displayFavoriteCity = document.getElementById("displayFavoriteCity");
 const getCityData = async (cityName) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}`);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     //pass data to a function to display new favorite card
     createFavCity(data)
 }
-
+const getWeatherIcon = (iconID) => {
+    switch (iconID) {
+        case "01d":
+            return "./WeatherAssets/yellow-sun.png";
+        case "01n":
+            return "/WeatherAssets/crescentMoon.png";
+        case "02d":
+            return "./WeatherAssets/h-cloud.png";
+        case "02n":
+            return "./WeatherAssets/moonAndCloud.png";
+        case "03d":
+            return "./WeatherAssets/clouds.png";
+        case "03n":
+            return "./WeatherAssets/clouds.png";
+        case "04d":
+            return "../WeatherAssets/cloudy.png";
+        case "04n":
+            return "../WeatherAssets/cloudy.png";
+        case "09d":
+            return "./WeatherAssets/rain.png";
+        case "09n":
+            return "./WeatherAssets/rain.png";
+        case "10d":
+            return "./WeatherAssets/sunAndRainy.png";
+        case "10n":
+            return "./WeatherAssets/rain.png";
+        case "11d":
+            return "./WeatherAssets/thunderstorm-1265161_1280.png";
+        case "11n":
+            return "./WeatherAssets/thunderstorm-1265161_1280.png";
+        case "13d":
+            return "./WeatherAssets/snow.png";
+        case "13n":
+            return "./WeatherAssets/snow.png";
+        case "50d":
+            return "./WeatherAssets/foggy.png";
+        case "50n":
+            return "./WeatherAssets/foggy.png";
+        default:
+            break;
+    }
+}
+const convertKToF = (Kelvin) => {
+    return Math.floor(((Kelvin - 273.15) * 9 / 5) + 32);
+}
 const createFavCity = (cityData) => {
     //create column to be appended to display variable
-    //create
+    console.log(cityData);
     const mainCol = document.createElement("div")
     mainCol.className = "col my-3";
     const cardContainer = document.createElement('div')
@@ -27,45 +72,59 @@ const createFavCity = (cityData) => {
     const cityTempCol = document.createElement("div");
     cityTempCol.className = "col ms-4 mt-4"
     const cityName = document.createElement("h2");
-        cityName.textContent = "Stockton"
+    cityName.textContent = cityData.city.name;
     const currentTemp = document.createElement('p');
-        currentTemp.textContent = "45°"
-    cityTempCol.appendChild(cityName); 
-    cityTempCol.appendChild(currentTemp); 
-     //verify that elements were appended appropriately]
+    currentTemp.textContent = cityData.list[0].main.temp;
+    cityTempCol.appendChild(cityName);
+    cityTempCol.appendChild(currentTemp);
+    //verify that elements were appended appropriately]
     const iconDiv = document.createElement("div");
     iconDiv.className = "col d-flex flex-column"
 
     const deleteBtn = document.createElement("img");
     deleteBtn.className = "x-button"
     deleteBtn.src = "../WeatherAssets/x-button.png";
+    deleteBtn.addEventListener("click", () => {
+        removeFavoriteCity(cityData.city.name)
+        mainCol.remove();
+    })
 
     const weatherIcon = document.createElement("img");
     weatherIcon.style = "width: 100px;";
     weatherIcon.class = "mx-auto"
-    weatherIcon.src = "../WeatherAssets/clouds.png" //Add a function to get current weather based on data.
+    weatherIcon.src = getWeatherIcon(cityData.list[0].weather[0].icon) //Add a function to get current weather based on data.
 
-iconDiv.appendChild(deleteBtn);
-iconDiv.appendChild(weatherIcon);
+    iconDiv.appendChild(deleteBtn);
+    iconDiv.appendChild(weatherIcon);
 
-topRow.appendChild(cityTempCol)
-topRow.appendChild(iconDiv)
+    topRow.appendChild(cityTempCol)
+    topRow.appendChild(iconDiv)
 
-const highNLowDiv = document.createElement("div")
-highNLowDiv.className = "d-flex align-items-end justify-content-center";
-const hTemp = document.createElement('p')
-hTemp.className = "pe-5"
-hTemp.textContent = "H: 60°"
-const lTemp = document.createElement('p')
-lTemp.textContent = "L: 30°"
+    const highNLowDiv = document.createElement("div")
+    highNLowDiv.className = "d-flex align-items-end justify-content-center";
+    const hTemp = document.createElement('p')
+    hTemp.className = "pe-5"
+    const lTemp = document.createElement('p')
 
-highNLowDiv.appendChild(hTemp);
-highNLowDiv.appendChild(lTemp);
-cardContainer.appendChild(topRow);
+    let lowTemp;
+    if (cityData.list[1].main.temp_min > cityData.list[0].main.temp_min)
+        lowTemp = cityData.list[0].main.temp_min;
+    else 
+        lowTemp = cityData.list[1].main.temp_min;
+    let highTemp
+    if (cityData.list[1].main.temp_max > cityData.list[0].main.temp_max) highTemp = cityData.list[0].main.temp_max;
+    else highTemp = cityData.list[1].main.temp_max;
 
-cardContainer.appendChild(highNLowDiv);
-mainCol.appendChild(cardContainer);
-displayFavoriteCity.appendChild(mainCol);
+    hTemp.textContent = `H: ${highTemp}°`
+    lTemp.textContent = `L: ${lowTemp}°`
+
+    highNLowDiv.appendChild(hTemp);
+    highNLowDiv.appendChild(lTemp);
+    cardContainer.appendChild(topRow);
+
+    cardContainer.appendChild(highNLowDiv);
+    mainCol.appendChild(cardContainer);
+    displayFavoriteCity.appendChild(mainCol);
 }
 
 inputCity.addEventListener("keypress", (event) => {
@@ -81,7 +140,6 @@ inputCity.addEventListener("keypress", (event) => {
         inputCity.value = "";
         //Call A function to redirect the user back to main page with cityName data displayed within the UI (DOM)
     }
-
 });
 const displayFavorites = () => {
     let cityArray = getFromLocalStorage();
