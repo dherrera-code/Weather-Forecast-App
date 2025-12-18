@@ -12,6 +12,7 @@ thursday: fix search engine to get data for cities with two words. (fixed)
         Add Modal into input validation! (Implemented!)
         Adjust font size and add font families.
 
+    Implement a function to execute on Home page when load and use if statement to determine if program received input from another page else, use geo location.
 
 // Implement a way to display favorite cities within favorites page! (DONE)
 // Afterwards, implement modal for the alert() error!

@@ -145,6 +145,8 @@ inputCity.addEventListener("keypress", (event) => {
         else cityName = inputCity.value;
         inputCity.value = "";
         //Call A function to redirect the user back to main page with cityName data displayed within the UI (DOM)
+        //redirect user to home page AND display (city).
+        window.location.href = "../index.html";
     }
 });
 const displayFavorites = () => {
