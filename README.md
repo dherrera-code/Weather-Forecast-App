@@ -10,7 +10,7 @@ wednesday: completed geolocation functionality when index first boots and implem
 (Starting to implement favorites functionality) (local storage getting used)
 
 // Implement a way to display favorite cities within favorites page!
-
+// Afterwards, implement modal for the alert() error!
 Notes from Pallavi: 
     Two pages:
     Search bar has no dropdown

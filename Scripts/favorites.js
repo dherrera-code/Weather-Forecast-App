@@ -12,14 +12,53 @@ const getCityData = async (cityName) => {
     const data = await response.json();
     console.log(data);
     //pass data to a function to display new favorite card
+    createFavCity(data)
 }
 
 const createFavCity = (cityData) => {
     //create column to be appended to display variable
     //create
+    const mainCol = document.createElement("div")
+    mainCol.className = "col my-3";
+    const cardContainer = document.createElement('div')
+    cardContainer.className = " favCardBg container";
+    cardContainer.style = "font-size: 40px;";
+    const topRow = document.createElement("div")
+    topRow.className = "row mb-4"
+    const cityTempCol = document.createElement("div");
+    cityTempCol.className = "col ms-4 mt-4"
+    const cityName = document.createElement("h2");
+        cityName.textContent = "Stockton"
+    const currentTemp = document.createElement('p');
+        currentTemp.textContent = "45°"
+    cityTempCol.appendChild(cityName, currentTemp); 
+     //verify that elements were appended appropriately]
+    const iconDiv = document.createElement("div");
+    iconDiv.className = "col d-flex flex-column"
 
+    const deleteBtn = document.createElement("img");
+    deleteBtn.className = "x-button"
+    deleteBtn.src = "../WeatherAssets/x-button.png";
 
+    const weatherIcon = document.createElement("img");
+    weatherIcon.src = "../WeatherAssets/clouds.png" //Add a function to get current weather based on data.
 
+iconDiv.appendChild(deleteBtn, weatherIcon);
+
+topRow.appendChild(cityTempCol, iconDiv)
+
+const highNLowDiv = document.createElement("div")
+highNLowDiv.className = "d-flex align-items-end justify-content-center";
+const hTemp = document.createElement('p')
+hTemp.className = "pe-5"
+hTemp.textContent = "60°"
+const lTemp = document.createElement('p')
+lTemp.textContent = "30°"
+
+highNLowDiv.appendChild(hTemp, lTemp);
+cardContainer.appendChild(highNLowDiv);
+mainCol.appendChild(cardContainer);
+displayFavoriteCity.appendChild(mainCol);
 }
 
 inputCity.addEventListener("keypress", (event) => {
@@ -48,4 +87,4 @@ const displayFavorites = () => {
 
 
 }
-// displayFavorites();
+displayFavorites();
