@@ -1,62 +1,94 @@
-body{
+body {
     background-image: url("../WeatherAssets/weather-background5S.gif");
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     /* background-attachment: fixed; */
     /* overflow: hidden; */
 }
-.inputColor::placeholder{
+
+.inputColor::placeholder {
     color: white;
     opacity: 1;
     font-size: 20px;
 }
+
 /* Start Background colors with background opacity! */
-.navBG{
+.navBG {
     background-color: rgba(255, 255, 255, 0.24);
 }
-.searchBarBg{
+
+.searchBarBg {
     background-color: rgb(32, 29, 29, 0.29);
     border-color: black;
 }
-.currentCityBg{
+
+.currentCityBg {
     background-color: rgba(32, 29, 29, 0.3);
     width: 665px;
     height: 436px;
     border-radius: 50px;
 }
-.favCardBg{
+
+.favCardBg {
     width: 600px;
     height: 260px;
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 35px;
 }
+
 /* End of bg-colors */
-.favHeight{
+.favHeight {
     min-height: 1200px;
 }
+
 /* Need to import all 4 fonts */
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Imprima&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kavoon&display=swap');
+
 /* Heading fonts */
-.impactFont{
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.impactFont {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
 /* import three fonts iceberg, inter and imprima */
 
 /* Navbar font */
-.fontIceberg{
-    font-family: Iceberg;
+@font-face {
+    font-family: "Iceberg";
+    src: url("../fonts/Iceberg-Regular.ttf");
+
+}
+
+.fontIceberg {
+    font-family: "Iceberg", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* temperature font */
-.font-inter{
-    font-family: inter
+.font-inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
+
 /* Favorites card fonts */
-.font-imprima{
-    font-family: imprima;
+.font-imprima {
+    font-family: "Imprima", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
+.font-kavoon {
+    font-family: "Kavoon", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 48px;
+}
+
 /* End of font classes */
 
-.x-button{
+.x-button {
     width: 30px;
     margin-left: auto;
     margin-top: 20px;

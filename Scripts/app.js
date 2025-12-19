@@ -47,6 +47,7 @@ const getCityData = async (currentCity) => {
     if (data.message === "city not found") {
         // alert("Please Enter a valid city name!");
         displayError.show();
+        geoLocation()
     }
     else {
         isFavorite(currentCityData.city.name+","+currentCityData.city.country);
@@ -237,7 +238,7 @@ toggleFavoriteBtn.addEventListener("click", () => {
 window.addEventListener("load", () => {
 
     //Add logic to test if input was received from favorites page
-    //else 
+    // Add logic to where if input is invalid to get geolocation data instead!
     const city = sessionStorage.getItem("searchCity")
     console.log(city)
     if (city != null) {

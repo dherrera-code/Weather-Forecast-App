@@ -70,7 +70,7 @@ const createFavCity = (cityData) => {
     const topRow = document.createElement("div")
     topRow.className = "row mb-4"
     const cityTempCol = document.createElement("div");
-    cityTempCol.className = "col ms-4 mt-4"
+    cityTempCol.className = "col ms-4 mt-4 font-imprima"
     const cityName = document.createElement("h2");
     cityName.textContent = cityData.city.name+", "+cityData.city.country;
     const currentTemp = document.createElement('p');
@@ -102,7 +102,8 @@ const createFavCity = (cityData) => {
     topRow.appendChild(iconDiv)
 
     const highNLowDiv = document.createElement("div")
-    highNLowDiv.className = "d-flex align-items-end justify-content-center";
+    highNLowDiv.className = "d-flex align-items-end justify-content-center font-inter";
+    highNLowDiv.style = "font-size: 32px"
     const hTemp = document.createElement('p')
     hTemp.className = "pe-5"
     const lTemp = document.createElement('p')

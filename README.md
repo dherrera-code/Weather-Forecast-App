@@ -39,9 +39,12 @@ ex: Tracy, CA shows that on Tue it should be snowing if ou look at the img and t
 
 I couldn't get the search function to work well enough to fill up the Favorites page but i see that you can remove and add to it so good job there
 
-need to add input validation before saving into sessionStorage
-import the rest of the fonts to better match the figma design
+need to add input validation for favorites page! (DONE)
+import the rest of the fonts to better match the figma design (DONE)
 Fix favorites list to include the country code. (DONE)
 fix search functionality to where it will display searched data. (DONE)
+Fixed remove favorite city functionality within favorites page! (DONE)
+
+Make the modal BIgger
 
 Peer Review 2: () 
