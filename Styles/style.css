@@ -3,16 +3,22 @@ body {
     background-image: url("../WeatherAssets/weather-background5S.gif");
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-attachment: fixed; */
-    /* overflow: hidden; */
 }
 
-.inputColor::placeholder {
+.inputColor::placeholder { /* this class adds white color towards the search bar */
     color: white;
     opacity: 1;
     font-size: 20px;
 }
-
+.favHeight {
+    min-height: 1200px;
+}
+.x-button {
+    width: 30px;
+    margin-left: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
 /* Start Background colors with background opacity! */
 .navBG {
     background-color: rgba(255, 255, 255, 0.24);
@@ -22,49 +28,36 @@ body {
     background-color: rgb(32, 29, 29, 0.29);
     border-color: black;
 }
-
 .currentCityBg {
     background-color: rgba(32, 29, 29, 0.3);
     width: 665px;
     height: 436px;
     border-radius: 50px;
 }
-
 .favCardBg {
     width: 600px;
     height: 260px;
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 35px;
 }
-
 /* End of bg-colors */
-.favHeight {
-    min-height: 1200px;
-}
 
-/* Need to import all 4 fonts */
-
+/* Start declaring font classes */
 
 /* Heading fonts */
 .impactFont {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-
-/* import three fonts iceberg, inter and imprima */
-
 /* Navbar font */
 @font-face {
     font-family: "Iceberg";
     src: url("../fonts/Iceberg-Regular.ttf");
-
 }
-
 .fontIceberg {
     font-family: "Iceberg", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
-
 /* temperature font */
 .font-inter {
     font-family: "Inter", sans-serif;
@@ -72,26 +65,16 @@ body {
     font-weight: 400;
     font-style: normal;
 }
-
 /* Favorites card fonts */
 .font-imprima {
     font-family: "Imprima", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
-
 .font-kavoon {
     font-family: "Kavoon", serif;
     font-weight: 400;
     font-style: normal;
     font-size: 48px;
 }
-
 /* End of font classes */
-
-.x-button {
-    width: 30px;
-    margin-left: auto;
-    margin-top: 20px;
-    border-radius: 10px;
-}
