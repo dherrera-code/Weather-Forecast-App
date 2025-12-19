@@ -13,17 +13,17 @@
 <body>
   <!-- The header will include two navbar links and a input search bar!-->
 <div id="displayError" class="modal" tabindex="-1">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">City Input Invalid!</h5>
+        <h5 class="modal-title" style="font-size: 40px;">City Input Invalid!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="font-size: 32px;">
         <p>Please enter a valid city name with country code!</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@
           </li>
         </ul>
           <input id="inputCity" style="width: 786px; height: 114px; border-radius: 60px; font-size: 20px; padding-left: 3rem;"
-            class="me-2 searchBarBg inputColor text-white" placeholder="Search City : Ex City, Country" aria-label="Search" />
+            class="searchBarBg inputColor text-white" placeholder="Search City : Ex City, Country" aria-label="Search" />
 
       </div>
     </nav>
@@ -85,7 +85,7 @@
 
   <!-- Display a 5 Day forecast -->
   <section>
-    <div class="container" style="margin-bottom: 5rem;">
+    <div class="container" style="margin-bottom: 15rem;">
       <div class="row my-4">
         <div class="col">
           <h1 class="text-white text-center my-3" style="font-size: 64px;">5-Day Forecast</h1>
