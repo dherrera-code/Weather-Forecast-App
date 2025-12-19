@@ -49,7 +49,7 @@ const getCityData = async (currentCity) => {
         displayError.show();
     }
     else {
-        isFavorite(currentCityData.city.name);
+        isFavorite(currentCityData.city.name+","+currentCityData.city.country);
         displayCurrentCity(currentCityData);
     }
 }
@@ -58,7 +58,8 @@ const getGeoLocationData = async (lat, long) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API_KEY}`);
     const data = await response.json();
     currentCityData = data;
-    isFavorite(currentCityData.city.name);
+    console.log(currentCityData.city.name+","+currentCityData.city.country)
+    isFavorite(currentCityData.city.name+","+currentCityData.city.country);
     console.log(favoriteBool);
     console.log(data);
     // console.log(currentCityData.city.name);
@@ -68,6 +69,8 @@ const getGeoLocationData = async (lat, long) => {
 const isFavorite = (city) => {
 
     let favCityArr = getFromLocalStorage();
+    console.log(favCityArr)
+    console.log(city)
     favoriteBool = false;
     toggleFavoriteBtn.src = "./WeatherAssets/heart-outline.png"
     for (let i = 0; i < favCityArr.length; i++) {
@@ -125,11 +128,8 @@ const getWeatherIcon = (iconID) => {
 const getCurrentDate = (dateString) => {
     dateString = dateString + "Z";
     let savedDate = new Date(dateString);
-    console.log(new Date(dateString + "Z"))
-
-
     savedDate = savedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-    console.log(savedDate)
+    // console.log(savedDate)
     let dayOfWeek = new Date(dateString).getDay();  //returns 0-6 (1)
     const dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return dayArray[dayOfWeek] + ` ${savedDate}`;
@@ -242,9 +242,13 @@ window.addEventListener("load", () => {
     console.log(city)
     if (city != null) {
         getCityData(city)
+        console.log("session-storage is running")
+        sessionStorage.removeItem("searchCity")
     }
-    else
+    else{
+        console.log("Geolocation is RUnnign")
         geoLocation()
+    }
 })
 
 inputCity.addEventListener("keypress", (event) => {

@@ -72,7 +72,7 @@ const createFavCity = (cityData) => {
     const cityTempCol = document.createElement("div");
     cityTempCol.className = "col ms-4 mt-4"
     const cityName = document.createElement("h2");
-    cityName.textContent = cityData.city.name;
+    cityName.textContent = cityData.city.name+", "+cityData.city.country;
     const currentTemp = document.createElement('p');
     currentTemp.textContent = convertKToF(cityData.list[0].main.temp) + '°';
     cityTempCol.appendChild(cityName);
