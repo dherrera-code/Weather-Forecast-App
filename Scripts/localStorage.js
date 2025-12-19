@@ -23,7 +23,7 @@ const getFromLocalStorage = () => {
 
     return JSON.parse(cityNames);
 }
-
+// city variable should have (city,countryCode) as a string
 const removeFavoriteCity = (city) => {
     let cityArray = getFromLocalStorage()
 

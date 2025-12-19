@@ -85,7 +85,8 @@ const createFavCity = (cityData) => {
     deleteBtn.className = "x-button"
     deleteBtn.src = "../WeatherAssets/x-button.png";
     deleteBtn.addEventListener("click", () => {
-        removeFavoriteCity(cityData.city.name)
+        console.log(cityData.city.name+","+cityData.city.country)
+        removeFavoriteCity(cityData.city.name+","+cityData.city.country)
         mainCol.remove();
     })
 
