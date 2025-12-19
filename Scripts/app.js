@@ -37,8 +37,6 @@ const fifthHighNLowTemps = document.getElementById("fifthHighNLowTemps");
 let currentCityData;
 let favoriteBool;
 
-
-
 const getCityData = async (currentCity) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=${API_KEY}`);
     const data = await response.json();
