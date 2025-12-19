@@ -49,4 +49,6 @@ Make the modal Bigger (DONE)
 
 // FOR NOW: add the "environment.js" within the scripts folder and add set "API_KEY" to your api key! 
     //THis is to make the weather application have full functionality!
-Peer Review 2: () 
+Peer Review 2: (Pallavi Pattanashetti) 
+
+it working for me when I search city it shows city weather and 5 days weather. I was able add fav city and delete it from the fav list. i liked the way did code in app.js.. its clean and readable..Great work!
