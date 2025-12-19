@@ -45,6 +45,8 @@ Fix favorites list to include the country code. (DONE)
 fix search functionality to where it will display searched data. (DONE)
 Fixed remove favorite city functionality within favorites page! (DONE)
 
-Make the modal BIgger
+Make the modal Bigger (DONE)
 
+// FOR NOW: add the "environment.js" within the scripts folder and add set "API_KEY" to your api key! 
+    //THis is to make the weather application have full functionality!
 Peer Review 2: () 
