@@ -92,7 +92,7 @@ const createFavCity = (cityData) => {
 
     const weatherIcon = document.createElement("img");
     weatherIcon.style = "width: 100px;";
-    weatherIcon.class = "mx-auto"
+    weatherIcon.className = "ms-auto me-4"
     weatherIcon.src = getWeatherIcon(cityData.list[0].weather[0].icon) //Add a function to get current weather based on data.
 
     iconDiv.appendChild(deleteBtn);
