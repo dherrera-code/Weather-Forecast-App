@@ -3,16 +3,12 @@ const saveFavorites = (cityName) => {
     //This function will fire when user toggles on the favorites button
     //Add logic to where at most 6 cities are saved and last city is removed.
     let cityArray = getFromLocalStorage();
-    console.log(cityArray.length)
-
     if (!cityArray.includes(cityName)) {
         if (cityArray.length > 5) {
             cityArray.pop();
         }
         cityArray.unshift(cityName)
     }
-
-    console.log(cityArray);
     localStorage.setItem("favoriteCities", JSON.stringify(cityArray))
 }
 
@@ -26,13 +22,10 @@ const getFromLocalStorage = () => {
 // city variable should have (city,countryCode) as a string
 const removeFavoriteCity = (city) => {
     let cityArray = getFromLocalStorage()
-
     let cityIndex = cityArray.indexOf(city);
 
     cityArray.splice(cityIndex, 1);
-    console.log(cityArray)
     localStorage.setItem("favoriteCities", JSON.stringify(cityArray))
-
 }
 
 export {saveFavorites , getFromLocalStorage, removeFavoriteCity}
