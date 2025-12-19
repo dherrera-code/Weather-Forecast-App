@@ -1,6 +1,6 @@
-import {API_KEY} from "./environment.js";
+import { API_KEY } from "./environment.js";
 
-import {saveFavorites, getFromLocalStorage, removeFavoriteCity} from "./localStorage.js"
+import { saveFavorites, getFromLocalStorage, removeFavoriteCity } from "./localStorage.js"
 // Declare JS DOM variables
 const displayError = new bootstrap.Modal(document.getElementById("displayError"));
 const inputCity = document.getElementById("inputCity");
@@ -70,10 +70,8 @@ const isFavorite = (city) => {
     let favCityArr = getFromLocalStorage();
     favoriteBool = false;
     toggleFavoriteBtn.src = "./WeatherAssets/heart-outline.png"
-    for(let i = 0; i < favCityArr.length; i++)
-    {
-        if(favCityArr[i] === city)
-        {
+    for (let i = 0; i < favCityArr.length; i++) {
+        if (favCityArr[i] === city) {
             favoriteBool = true;
             toggleFavoriteBtn.src = "./WeatherAssets/heart-red.png"
         }
@@ -127,7 +125,7 @@ const getWeatherIcon = (iconID) => {
 const getCurrentDate = (dateString) => {
     dateString = dateString + "Z";
     let savedDate = new Date(dateString);
-    console.log(new Date(dateString+ "Z"))
+    console.log(new Date(dateString + "Z"))
 
 
     savedDate = savedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
@@ -154,7 +152,7 @@ const getHighNLow = (data, startIndex) => {
 
 }
 const displayCurrentCity = (currentCityData) => {
-    currentCityName.textContent = currentCityData.city.name + ` ${currentCityData.city.country}`;
+    currentCityName.textContent = currentCityData.city.name + `, ${currentCityData.city.country}`;
     currentCityTemp.textContent = convertKToF(currentCityData.list[0].main.temp) + "°";
     console.log(currentCityData.list[0].dt_txt);
     currentDate.textContent = getCurrentDate(currentCityData.list[0].dt_txt)
@@ -162,12 +160,11 @@ const displayCurrentCity = (currentCityData) => {
     currentWeatherDesc.textContent = currentCityData.list[0].weather[0].main;
     let lowTemp = currentCityData.list[0].main.temp_min;
     let highTemp = currentCityData.list[0].main.temp_max;
-    for(let i = 0; i < 4; i++)
-    {
-        if(lowTemp > currentCityData.list[i].main.temp_min) lowTemp = currentCityData.list[i].main.temp_min
-        if(highTemp < currentCityData.list[i].main.temp_max) highTemp = currentCityData.list[i].main.temp_max
+    for (let i = 0; i < 4; i++) {
+        if (lowTemp > currentCityData.list[i].main.temp_min) lowTemp = currentCityData.list[i].main.temp_min
+        if (highTemp < currentCityData.list[i].main.temp_max) highTemp = currentCityData.list[i].main.temp_max
     }
-    
+
     currentHighTemp.textContent = "H: " + convertKToF(highTemp) + "°";
     currentLowTemp.textContent = "L: " + convertKToF(lowTemp) + "°";
 
@@ -214,18 +211,24 @@ const geoLocation = () => {
 // let favoriteBool = false;
 toggleFavoriteBtn.addEventListener("click", () => {
     console.log("Button is pressed!");
-    let cityName = currentCityName.textContent.split(" "); //returns current city in array index 0. 
-    console.log(cityName[0])
-
+    let cityName = currentCityName.textContent.split(",");  // French Camp, US
+    console.log(cityName);
+    let index = 0;
+    cityName.forEach(i => {
+        cityName[index] = i.trim();
+        index++;
+    });
+    console.log(cityName)
+    console.log(cityName.join())
     if (!favoriteBool) { //if not favored, then add to favorites
         toggleFavoriteBtn.src = "./WeatherAssets/heart-red.png"
         favoriteBool = !favoriteBool;
-        saveFavorites(cityName[0])
+        saveFavorites(cityName.join())
     }
     else { //this will remove city name from local storage
         toggleFavoriteBtn.src = "./WeatherAssets/heart-outline.png"
         favoriteBool = !favoriteBool;
-        removeFavoriteCity(cityName[0]);
+        removeFavoriteCity(cityName.join());
     }
 })
 //This function should run when the websites first boots.
@@ -235,13 +238,12 @@ window.addEventListener("load", () => {
 
     //Add logic to test if input was received from favorites page
     //else 
-        const city = sessionStorage.getItem("searchCity")
-        console.log(city)
-        if(city != null)
-        {
-            getCityData(city)
-        }
-        else
+    const city = sessionStorage.getItem("searchCity")
+    console.log(city)
+    if (city != null) {
+        getCityData(city)
+    }
+    else
         geoLocation()
 })
 

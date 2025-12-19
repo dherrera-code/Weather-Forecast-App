@@ -35,13 +35,27 @@ body{
     min-height: 1200px;
 }
 /* Need to import all 4 fonts */
+/* Heading fonts */
 .impactFont{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+/* import three fonts iceberg, inter and imprima */
+
+/* Navbar font */
 .fontIceberg{
     font-family: Iceberg;
 }
+
+/* temperature font */
+.font-inter{
+    font-family: inter
+}
+/* Favorites card fonts */
+.font-imprima{
+    font-family: imprima;
+}
 /* End of font classes */
+
 .x-button{
     width: 30px;
     margin-left: auto;

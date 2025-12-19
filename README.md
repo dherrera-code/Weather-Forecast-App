@@ -1,5 +1,7 @@
 #Daniel Herrera
 
+Weather Sprint Last Day (12/19/2025)
+
 Weather Sprint Day 1 (12/15): Initialized Repo, re-created the structure of both weather pages and created ID tags for all necessary HTML Elements within HOME Page.
 Implemented a function to call API data from OpenWEather API!
 
@@ -39,3 +41,4 @@ I couldn't get the search function to work well enough to fill up the Favorites 
 
 need to add input validation before saving into sessionStorage
 import the rest of the fonts to better match the figma design
+Fix favorites list to include the country code. 
